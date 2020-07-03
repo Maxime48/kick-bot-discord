@@ -1,4 +1,3 @@
-dotenv 
 discord.utils 
 time 
 discord
