@@ -15,13 +15,16 @@ async def on_ready():
     print("The bot is ready!")
     await client.change_presence(game=discord.Game(name="Kicking Inactive people"))
     
-count= 0
+count = 0
 max_sec = 60 
 while True: 
-
-  async def purge_members(ctx):
-    for member in ctx.message.server.members:
-        if not get(member.roles, name='active'):
-            await bot.kick(member)
-
+    time.sleep(1)
+    count += 1
+    await client.change_presence(game=discord.Game(name="Kicking Inactive people in",count,"seconds"))
+    if count == max_sec:
+        async def purge_members(ctx):
+            for member in ctx.message.server.members:
+                if not get(member.roles, name='active'):
+                    await bot.kick(member)
+            
 client.run(TOKEN)
